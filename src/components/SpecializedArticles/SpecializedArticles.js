@@ -1,12 +1,17 @@
 import { Icon } from "@iconify/react";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 import SpecializedArticlesItems from "./SpecializedArticlesItems";
 
 const SpecializedArticles = () => {
   const [allBestArticles, setAllBestArticles] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchBestArticles = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://sabzlearn-123dd-default-rtdb.firebaseio.com/best-articles.json"
@@ -26,8 +31,9 @@ const SpecializedArticles = () => {
 
       setAllBestArticles(loadedBestArticles);
     } catch (error) {
-      console.log(error);
+      setIsError(true);
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -48,7 +54,11 @@ const SpecializedArticles = () => {
           <Icon icon="bi:arrow-left-short" width="24" />
         </Link>
       </div>
-      <SpecializedArticlesItems articles={allBestArticles} />
+      {!isLoading && !isError && (
+        <SpecializedArticlesItems articles={allBestArticles} />
+      )}
+      {isLoading && !isError && <Loading />}
+      {!isLoading && isError && <Error />}
     </div>
   );
 };

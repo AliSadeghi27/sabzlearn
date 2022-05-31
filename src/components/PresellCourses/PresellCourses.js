@@ -1,10 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import CoursesItem from "../Courses/CoursesItem";
+import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 
 const PresellCourses = () => {
   const [allPresellCourses, setAllPresellCourses] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchPresellCourses = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://sabzlearn-123dd-default-rtdb.firebaseio.com/presell-courses.json"
@@ -27,8 +32,9 @@ const PresellCourses = () => {
 
       setAllPresellCourses(loadedPresellCourses);
     } catch (error) {
-      console.log(error);
+      setIsError(true);
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -42,7 +48,9 @@ const PresellCourses = () => {
           دوره های درحال پیش فروش
         </h2>
       </div>
-      <CoursesItem courses={allPresellCourses} />
+      {!isLoading && !isError && <CoursesItem courses={allPresellCourses} />}
+      {isLoading && !isError && <Loading />}
+      {!isLoading && isError && <Error />}
     </div>
   );
 };

@@ -1,10 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import CoursesItem from "../Courses/CoursesItem";
+import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 
 const PopularCourses = () => {
   const [allPopularCourses, setAllPopularCourses] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchPopularCourses = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://sabzlearn-123dd-default-rtdb.firebaseio.com/popular-courses.json"
@@ -27,8 +32,9 @@ const PopularCourses = () => {
 
       setAllPopularCourses(loadedPopularCourses);
     } catch (error) {
-      console.log(error);
+      setIsError(true);
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -42,7 +48,9 @@ const PopularCourses = () => {
           محبوب ترین دوره ها
         </h2>
       </div>
-      <CoursesItem courses={allPopularCourses} />
+      {!isLoading && !isError && <CoursesItem courses={allPopularCourses} />}
+      {isLoading && !isError && <Loading />}
+      {!isLoading && isError && <Error />}
     </div>
   );
 };

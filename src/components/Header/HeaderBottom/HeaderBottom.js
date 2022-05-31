@@ -38,7 +38,9 @@ const HeaderBottom = () => {
             </g>
           </svg>
           <h3 className="text-white text-4xl mt-2">۲۱,۳۱۰</h3>
-          <span className="text-white text-xl">دوره آموزشی داریم</span>
+          <span className="text-white text-lg">
+            کاربر توی سبزلرن ثبت نام کردن
+          </span>
         </div>
         <div className="flex flex-col items-center">
           <svg

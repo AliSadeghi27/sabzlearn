@@ -2,11 +2,16 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import CoursesItem from "./CoursesItem";
+import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
 
 const Courses = () => {
   const [allCourses, setAllCourses] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchCourses = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://sabzlearn-123dd-default-rtdb.firebaseio.com/courses.json"
@@ -28,9 +33,10 @@ const Courses = () => {
       }
 
       setAllCourses(loadedCourses);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setIsError(true);
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -56,7 +62,9 @@ const Courses = () => {
           <Icon icon="bi:arrow-left-short" width="24" />
         </Link>
       </div>
-      <CoursesItem courses={allCourses} />
+      {!isLoading && !isError && <CoursesItem courses={allCourses} />}
+      {isLoading && !isError && <Loading />}
+      {!isLoading && isError && <Error />}
     </div>
   );
 };
