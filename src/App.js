@@ -55,16 +55,12 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        {!isLoading && !isError && (
-          <>
-            <Route path="/shop">
-              <Shop allCourses={allCourses} />
-            </Route>
-            <Route path="/:url" exact>
-              <CoursePage allCourses={allCourses} />
-            </Route>
-          </>
-        )}
+        <Route path="/shop">
+          <Shop allCourses={allCourses} />
+        </Route>
+        <Route path="/:url" exact>
+          <CoursePage allCourses={allCourses} />
+        </Route>
         {isLoading && !isError && <Loading />}
         {!isLoading && isError && <Error />}
         <Route path="*">

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useScrollTo } from "react-use-window-scroll";
 
 const CoursePage = (props) => {
   const [course, setCourse] = useState([]);
   const params = useParams();
+  const scrollTo = useScrollTo();
 
   useEffect(() => {
+    scrollTo(0, 0);
     setCourse(props.allCourses.find((course) => course.url === params.url));
   }, [props.allCourses, params.url]);
 

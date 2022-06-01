@@ -12,7 +12,7 @@ const CoursesItem = (props) => {
               key={course.id}
               style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
             >
-              <Link to={`/${course.url}`}>
+              <Link to={`/${course.url}`} style={{minWidth: "360px", minHeight: "180px"}}>
                 <img
                   className="rounded-t-md w-full"
                   src={course.img}
