@@ -14,7 +14,7 @@ const SpecializedArticles = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://sabzlearn-123dd-default-rtdb.firebaseio.com/best-articles.json"
+        "https://react-sabzlearn-default-rtdb.firebaseio.com/best-articles.json"
       );
       const data = await response.json();
       const loadedBestArticles = [];
