@@ -14,7 +14,7 @@ const Courses = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://sabzlearn-123dd-default-rtdb.firebaseio.com/courses.json"
+        "https://react-sabzlearn-default-rtdb.firebaseio.com/courses.json"
       );
       const data = await response.json();
       const loadedCourses = [];
