@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import FooterCenter from "./FooterCenter";
 import FooterLeft from "./FooterLeft";
 
 const Footer = () => {
@@ -26,37 +26,13 @@ const Footer = () => {
         </div>
         <div className="flex flex-col w-full lg:w-1/3 lg:mx-3">
           <h3 className={h3Class}>آخرین مطالب</h3>
-          <ul className="flex flex-col text-[#464749] space-y-3">
-            <li className="hover:text-blue-500 transition-all duration-300">
-              <Link to="/">
-                نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون
-              </Link>
-            </li>
-            <li className="hover:text-blue-500 transition-all duration-300">
-              <Link to="/">
-                چگونه پایتون را آپدیت کنیم؟ | آموزش صفر تا صد آپدیت کردن پایتون
-              </Link>
-            </li>
-            <li className="hover:text-blue-500 transition-all duration-300">
-              <Link to="/">
-                آموزش نصب پایتون صفر تا صد | نحوه نصب پایتون در مک، ویندوز و
-                لینوکس
-              </Link>
-            </li>
-            <li className="hover:text-blue-500 transition-all duration-300">
-              <Link to="/">
-                بهترین فریم ورک های فرانت اند | بررسی کاربرد، مزایا و معایب
-                هرکدام
-              </Link>
-            </li>
-            <li className="hover:text-blue-500 transition-all duration-300">
-              <Link to="/">معرفی بهترین سایت آموزش جاوا اسکریپت</Link>
-            </li>
-          </ul>
+          <FooterCenter />
         </div>
         <FooterLeft h3Class={h3Class} />
       </footer>
-      <p className="text-center text-[#777777] mb-10">کلیه حقوق برای آکادمی آموزش برنامه نویسی سبز لرن محفوظ است.</p>
+      <p className="text-center text-[#777777] mb-10">
+        کلیه حقوق برای آکادمی آموزش برنامه نویسی سبز لرن محفوظ است.
+      </p>
     </>
   );
 };

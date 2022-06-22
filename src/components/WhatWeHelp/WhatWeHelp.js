@@ -1,4 +1,6 @@
 import { Icon } from "@iconify/react";
+import WhatWeHelpItem from "./WhatWeHelpItem";
+import WhatWeHelpTitle from "./WhatWeHelpTitle";
 
 const WhatWeHelp = () => {
   const WhatWeHelpItemOne = [
@@ -34,43 +36,16 @@ const WhatWeHelp = () => {
 
   return (
     <div className="mx-[2rem] xl:mx-[6rem] mt-12">
-      <div className="flex flex-col">
-        <h2 className="text-[20px] lg:text-[26px] text-gray-800 font-bold relative after:content-[''] after:absolute after:bottom-1 after:w-[25%] after:h-[45%] after:bg-green-700 after:opacity-50 after:right-0 before:content-[''] before:absolute before:h-12 before:w-1 before:bg-green-500 before:top-3 before:rounded before:-right-3 before:rotate-[15deg]">
-          ما چه کمکی بهتون میکنیم؟
-        </h2>
-        <span className="mr-1.5 text-gray-500">
-          از اونجایی که آکادمی آموزشی سبزلرن یک آکادمی خصوصی هست
-        </span>
-      </div>
+      <WhatWeHelpTitle />
       <div className="flex flex-col w-full mt-4">
         <div className="flex flex-col md:flex-row justify-between">
           {WhatWeHelpItemOne.map((item) => (
-            <div
-              className="flex w-full md:w-[48%] md:flex-row flex-col mb-4 p-3 items-center rounded-lg"
-              key={item.id}
-              style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
-            >
-              <span className="ml-3 mb-2 md:mb-0">{item.icon}</span>
-              <div className="flex flex-col">
-                <h2 className="text-xl font-bold">{item.title}</h2>
-                <span className="text-[#050505] mt-2">{item.content}</span>
-              </div>
-            </div>
+            <WhatWeHelpItem item={item} />
           ))}
         </div>
         <div className="flex flex-col md:flex-row justify-between">
           {WhatWeHelpItemTwo.map((item) => (
-            <div
-              className="flex w-full md:w-[48%] md:flex-row flex-col mb-4 p-3 items-center rounded-lg"
-              key={item.id}
-              style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
-            >
-              <span className="ml-3 mb-2 md:mb-0">{item.icon}</span>
-              <div className="flex flex-col">
-                <h2 className="text-xl font-bold">{item.title}</h2>
-                <span className="text-[#050505] mt-2">{item.content}</span>
-              </div>
-            </div>
+            <WhatWeHelpItem item={item} />
           ))}
         </div>
       </div>
