@@ -10,7 +10,7 @@ const CoursePage = (props) => {
   useEffect(() => {
     scrollTo(0, 0);
     setCourse(props.allCourses.find((course) => course.url === params.url));
-  }, [props.allCourses, params.url]);
+  }, [props.allCourses, params.url, scrollTo]);
 
   return (
     <>

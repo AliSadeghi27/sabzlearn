@@ -40,12 +40,12 @@ const WhatWeHelp = () => {
       <div className="flex flex-col w-full mt-4">
         <div className="flex flex-col md:flex-row justify-between">
           {WhatWeHelpItemOne.map((item) => (
-            <WhatWeHelpItem item={item} />
+            <WhatWeHelpItem key={item.id} item={item} />
           ))}
         </div>
         <div className="flex flex-col md:flex-row justify-between">
           {WhatWeHelpItemTwo.map((item) => (
-            <WhatWeHelpItem item={item} />
+            <WhatWeHelpItem item={item} key={item.id} />
           ))}
         </div>
       </div>
