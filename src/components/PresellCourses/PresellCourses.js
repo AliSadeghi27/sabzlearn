@@ -12,7 +12,7 @@ const PresellCourses = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://sabzlearn-4cb04-default-rtdb.firebaseio.com/presell-courses.json"
+        "https://react-sabzlearn-fefb6-default-rtdb.firebaseio.com/presell-courses.json"
       );
       const data = await response.json();
       const loadedPresellCourses = [];
