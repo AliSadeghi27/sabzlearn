@@ -12,7 +12,7 @@ const PopularCourses = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://react-sabzlearn-fefb6-default-rtdb.firebaseio.com/popular-courses.json"
+        "https://sabzlearn-58732-default-rtdb.firebaseio.com/popular-courses.json"
       );
       const data = await response.json();
       const loadedPopularCourses = [];
